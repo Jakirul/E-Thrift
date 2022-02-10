@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import './ShowPage.css'
-
 import Carousel from "react-multi-carousel";
 import { Image } from "semantic-ui-react";
+
 
 
 const ShowPage = () => {
@@ -151,17 +151,17 @@ const ShowPage = () => {
             // setTimeout(() => window.location.reload(), 500)
         }
     }
-    
+
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 1,
-            slidesToSlide: 1 // optional, default to 1.
+            items: 3,
+            slidesToSlide: 3 // optional, default to 1.
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 1,
-            slidesToSlide: 1 // optional, default to 1.
+            items: 2,
+            slidesToSlide: 2 // optional, default to 1.
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
@@ -169,14 +169,15 @@ const ShowPage = () => {
             slidesToSlide: 1 // optional, default to 1.
         }
     };
-      return (
+   
+
+
+    let imageString
+    return (
         <div className="ShowPage">
             <div>
                 <h1>{data.name}</h1>
-                {image && image.length
-                    ?
-                      <Carousel
-                        aria-label = 'carousel'
+                <Carousel
                         swipeable={false}
                         draggable={false}
                         showDots={true}
@@ -188,24 +189,32 @@ const ShowPage = () => {
                         customTransition="all .5"
                         transitionDuration={500}
                         containerClass="carousel-container"
-                        // removeArrowOnDeviceType={["tablet", "mobile"]}
+                        removeArrowOnDeviceType={["tablet", "mobile"]}
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px"
                     >
-                        {image.map(img => {
-                            return (
-                                <Image
-                                    draggable={false}
+                {image && image.length
+                    ?
+                    
+                    image && image.map((image, key) => {
+                          imageString = `https://res.cloudinary.com/deizaqii7/${image.img_url}`
+                          return (
+                              
+                            <div key={key}>
+                                {/* <Image 
+                                    draggable={true}
                                     style={{ width: "100%", height: "80%" }}
-                                    src = {`https://res.cloudinary.com/deizaqii7/${img.img_url}`}
-                                    onClick={() => navigate(`/view/${img.item_id}`)}
-                                />
-                            );
-                        })}
-                    </Carousel>
+                                    src={"https://res.cloudinary.com/deizaqii7/" + image.img_url}
+                                /> */}
+                                    <img src={"https://res.cloudinary.com/deizaqii7/" + image.img_url} />
+                            </div>
+                            
+                          )
+                          
+                      })
                     :
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/No_image_preview.png" />
-                }
+                }</Carousel>
 
                 {data.seller === localStorage.getItem("username")
                     ?
