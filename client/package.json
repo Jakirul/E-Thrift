@@ -40,7 +40,7 @@
     "start": "react-scripts start",
     "build": "webpack --config config/webpack.config.production.js",
     "test": "react-scripts test --watchAll --setupFilesAfterEnv ./src/test/setupTests.js",
-    "coverage": "npm test --coverage --silent",
+    "coverage": "npm test -- --coverage",
     "eject": "react-scripts eject"
   },
   "jest": {
