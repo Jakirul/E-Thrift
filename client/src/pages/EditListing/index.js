@@ -52,7 +52,6 @@ const EditListing = () => {
             }
             if (checkedCount > 1) {
                 e.target.deleteImages.forEach((image => {
-                    console.log(image.value, image.checked, image.id)
 
                     let formData2 = new FormData(e.target);
                     formData2.append("id", image.id)
@@ -66,7 +65,6 @@ const EditListing = () => {
                             
                             let fetching = await fetch("http://127.0.0.1:8000/images/delete/", options1);
                             let jsonfetch = await fetching.json();
-                            console.log("deleting111 =>", jsonfetch)
                             
                         })()
                     }
@@ -75,9 +73,6 @@ const EditListing = () => {
 
                 let formData3 = new FormData(e.target);
                 
-                if (e.target.deleteImages.checked) {
-                    console.log("img delete = ", e.target.deleteImages.value)
-                }
                 formData3.append("id",  id)
                 formData3.append("image",  e.target.deleteImages.value)
                 if ( e.target.deleteImages.checked) {
@@ -88,7 +83,6 @@ const EditListing = () => {
                         }
                         let fetching = await fetch("http://127.0.0.1:8000/images/delete/", options1);
                         let jsonfetch = await fetching.json();
-                        console.log("deleting222 =>", jsonfetch)
                     })()
                 }
 
@@ -106,9 +100,8 @@ const EditListing = () => {
 
         }
 
-        const {data} = await fetch(`http://127.0.0.1:8000/images/add/${id}/`, options3)
-        const jsondata = data;
-        console.log("data =>", jsondata)
+        const data2 = await fetch(`http://127.0.0.1:8000/images/add/${id}/`, options3)
+        const jsondata = await data2.json()
 
         let name = form.name.value.trim()
         let description = form.description.value.trim()

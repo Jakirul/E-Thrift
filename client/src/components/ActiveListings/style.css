@@ -36,7 +36,7 @@
 .active-listings-container {
     justify-content: center !important;
     align-content: center !important;
-    gap: 4px;
+    gap: 1rem;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

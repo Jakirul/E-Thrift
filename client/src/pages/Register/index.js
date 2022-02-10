@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 import { postRegister, postLogin } from "../../helpers/requests";
-import defaultProfileImg from "../../assets/default-profile.png"
+import defaultProfileImg from "../../assets/default-profile.png";
 import "./style.css";
 
 const Register = () => {
@@ -25,8 +25,8 @@ const Register = () => {
   /**
    * Opens the file explorer to select an image.
    * Triggers the fileInput element using a reference of it with useRef.
-   * 
-   * @param {Click event belonging to element calling the method} e 
+   *
+   * @param {Click event belonging to element calling the method} e
    */
   const openFiles = (e) => {
     e.preventDefault();
@@ -36,8 +36,8 @@ const Register = () => {
   /**
    * Processes the selected file, asserting that it is a suitable image
    * and then sets the avatarImg state accordingly.
-   * 
-   * @param {Change event for when an image is selected by the fileInput} e 
+   *
+   * @param {Change event for when an image is selected by the fileInput} e
    */
   const onFileSelected = (e) => {
     const file = e.target.files[0];
@@ -55,7 +55,7 @@ const Register = () => {
       setAvatarImg(null);
       setPreviewImg(defaultProfileImg);
     }
-  }
+  };
 
   /**
    * Submits the form data to request user registration.
@@ -68,30 +68,29 @@ const Register = () => {
     try {
       if (isMounted) {
         e.preventDefault();
-        let data = new FormData(e.target)
+        let data = new FormData(e.target);
 
-        data.append('first_name', firstName)
-        data.append('last_name', lastName)
-        data.append('username', username)
-        data.append('email', email)
-        data.append('password', password)
-        data.append('password_confirmation', passwordConfirm)
-        data.append('phone_number', phoneNumber)
-        
+        data.append("first_name", firstName);
+        data.append("last_name", lastName);
+        data.append("username", username);
+        data.append("email", email);
+        data.append("password", password);
+        data.append("password_confirmation", passwordConfirm);
+        data.append("phone_number", phoneNumber);
+
         if (e.target.image.files.length > 0) {
-          data.append('avatar_url', e.target.image.files[0])
+          data.append("avatar_url", e.target.image.files[0]);
         }
-        
+
         // register the user
         let output = await postRegister(data);
-        
+
         if (output !== "Error registering!") {
-          
-          localStorage.clear()
+          localStorage.clear();
           // log the user in upon successful register
           await requestLogin();
         } else {
-          localStorage.clear()
+          localStorage.clear();
         }
       }
     } catch (err) {
@@ -105,14 +104,14 @@ const Register = () => {
    */
   async function requestLogin() {
     try {
-      if(isMounted) {
+      if (isMounted) {
         // obtain access and refresh tokens
         const { data } = await postLogin({
           email,
           password,
         });
         const user = jwt_decode(data.access);
-        localStorage.setItem('authTokens', JSON.stringify(data))
+        localStorage.setItem("authTokens", JSON.stringify(data));
         localStorage.setItem("username", user.username);
         navigate("/");
       }
@@ -142,16 +141,30 @@ const Register = () => {
    * Clean up component after unmounting to avoid memory leaks.
    */
   useEffect(() => {
-    return () => { isMounted.current = false }
+    return () => {
+      isMounted.current = false;
+    };
   });
 
   return (
     <div className="register-page">
-      <h1>Register</h1>
       <form onSubmit={submitRegister} aria-label="form">
+      <h1>Register</h1>
         <div className="profile-image-container">
-          <CancelOutlinedIcon className="cancel-icon" aria-label="remove-image" onClick={removeSelectedImage} />
-          <img className="profile-img" src={previewImg} alt="Profile" onClick={e => openFiles(e)} />
+          {previewImg !== defaultProfileImg && (
+            <CancelOutlinedIcon
+              className="cancel-icon"
+              aria-label="remove-image"
+              onClick={removeSelectedImage}
+            />
+          )}
+
+          <img
+            className="profile-img"
+            src={previewImg}
+            alt="Profile"
+            onClick={(e) => openFiles(e)}
+          />
           <input
             type="file"
             accept="image/*"
@@ -159,86 +172,94 @@ const Register = () => {
             aria-label="profile-input"
             name="image"
             hidden={true}
-            onChange={e => onFileSelected(e)}
+            onChange={(e) => onFileSelected(e)}
           />
         </div>
 
-        <label label="first-name" aria-label="first-name">
-          First name
-        </label>
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          aria-label="first-name-input"
-          required
-        />
-
-        <label label="last-name" aria-label="last-name">
-          Last name
-        </label>
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          aria-label="last-name-input"
-          required
-        />
-
-        <label label="username" aria-label="username">
-          Username
-        </label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          aria-label="username-input"
-          required
-        />
-
-        <label label="email" aria-label="email">
-          Email address
-        </label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          aria-label="email-input"
-          required
-        />
-
-        <label label="password" aria-label="password">
-          Password
-        </label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          aria-label="password-input"
-          required
-        />
-
-        <label label="password-confirm" aria-label="password-confirm">
-          Confirm password
-        </label>
-        <input
-          type="password"
-          value={passwordConfirm}
-          onChange={(e) => setPasswordConfirm(e.target.value)}
-          aria-label="password-confirm-input"
-          required
-        />
-
-        <label label="phone-number" aria-label="phone-number">
-          Phone number
-        </label>
-        <input
-          type="text"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          aria-label="phone-number-input"
-          required
-        />
+        <div className="input-wrapper">
+          <label label="first-name" aria-label="first-name">
+            First name
+          </label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            aria-label="first-name-input"
+            required
+          />
+        </div>
+        <div className="input-wrapper">
+          <label label="last-name" aria-label="last-name">
+            Last name
+          </label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            aria-label="last-name-input"
+            required
+          />
+        </div>
+        <div className="input-wrapper">
+          <label label="username" aria-label="username">
+            Username
+          </label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            aria-label="username-input"
+            required
+          />
+        </div>
+        <div className="input-wrapper">
+          <label label="email" aria-label="email">
+            Email address
+          </label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-label="email-input"
+            required
+          />
+        </div>
+        <div className="input-wrapper">
+          <label label="password" aria-label="password">
+            Password
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            aria-label="password-input"
+            required
+          />
+        </div>
+        <div className="input-wrapper">
+          <label label="password-confirm" aria-label="password-confirm">
+            Confirm password
+          </label>
+          <input
+            type="password"
+            value={passwordConfirm}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
+            aria-label="password-confirm-input"
+            required
+          />
+        </div>
+        <div className="input-wrapper">
+          <label label="phone-number" aria-label="phone-number">
+            Phone number
+          </label>
+          <input
+            type="text"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            aria-label="phone-number-input"
+            required
+          />
+        </div>
 
         <input
           type="submit"

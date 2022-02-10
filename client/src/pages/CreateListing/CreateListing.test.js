@@ -1,48 +1,44 @@
 /**
  * @jest-environment jsdom
  */
- import axios from 'axios';
- jest.mock('axios');
- 
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
+import axios from "axios";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-import {CreateListing} from '../index';
+import { CreateListing } from "../index";
+jest.mock("axios");
 
 const mockedUsedNavigate = jest.fn();
 
-jest.mock('react-router-dom', () => ({
-   ...jest.requireActual('react-router-dom'),
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockedUsedNavigate,
 }));
 
-describe('CreateListring', ()=>{
+describe("CreateListring", () => {
+  test("render", async () => {
+    // jest.spyOn(window.localStorage.__proto__, 'setItem');
+    // window.localStorage.__proto__.setItem = jest.fn();
 
-    test('render', async ()=>{
-        
-        // jest.spyOn(window.localStorage.__proto__, 'setItem');
-        // window.localStorage.__proto__.setItem = jest.fn();
+    // jest.spyOn(FormData, 'append').mockReturnValue('hello')
 
-        // jest.spyOn(FormData, 'append').mockReturnValue('hello')
+    render(<CreateListing />);
 
-        render(<CreateListing />)
+    const name = screen.getByLabelText("name");
+    const desc = screen.getByLabelText("desc");
+    const loc = screen.getByLabelText("loc");
+    const sub = screen.getByLabelText("sub");
 
-        const name = screen.getByLabelText('name')
-        const desc = screen.getByLabelText('desc')
-        const loc = screen.getByLabelText('loc')
-        const sub = screen.getByLabelText('sub')
+    userEvent.type(name, "hello");
+    await waitFor(() => expect(name.textContent).toBe("hello"));
+    userEvent.type(desc, "diss");
+    await waitFor(() => expect(desc.textContent).toBe("diss"));
+    userEvent.type(loc, "loc");
+    await waitFor(() => expect(loc.textContent).toBe("loc"));
 
-        userEvent.type(name,'hello')
-        await waitFor(() => expect(name.textContent).toBe('hello'))
-        userEvent.type(desc, 'diss')
-        await waitFor(() => expect(desc.textContent).toBe('diss'))
-        userEvent.type(loc, 'loc')
-        await waitFor(() => expect(loc.textContent).toBe('loc'))
-        
-        await waitFor(()=>userEvent.click(sub))
-        
-        // expect(desc.textContent).toBe('diss')
-        //expect(name.textContent).toBe('hello')
-        
-    })
-})
+    userEvent.click(sub);
+
+    // expect(desc.textContent).toBe('diss')
+    //expect(name.textContent).toBe('hello')
+  });
+});

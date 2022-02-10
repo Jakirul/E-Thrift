@@ -63,11 +63,9 @@ const CreateListing = () => {
 
 
             }
-            console.log(options2)
 
             const data2 = await fetch(`http://127.0.0.1:8000/images/add/${split[1].split('"')[0]}/`, options2)
             const jsondata = await data2.json()
-            console.log("data =>", jsondata)
 
             navigate("/search")
 

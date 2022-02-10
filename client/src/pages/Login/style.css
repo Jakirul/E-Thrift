@@ -1,0 +1,38 @@
+.login-page > form {
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto 50px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 400px;
+}
+
+.login-page > form  > div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: .5rem;
+}
+
+.submit-btn {
+    cursor: pointer;
+    width: 200px;
+    margin: .5rem auto .5rem auto;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #4BB543;
+    font-weight: bold;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #45a33e;
+}
+
+@media screen and (max-width: 620px) {
+   .login-page > form {
+       width: 80%;
+   }
+}

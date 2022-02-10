@@ -48,8 +48,6 @@ async function getRating(username) {
     const {data} = await axios.get(
       `http://127.0.0.1:8000/user/rating/${username}`
     );
-    //const rating = resp.data
-    //console.log(data)
     return data;
   } catch (err) {
     console.warn(`Error getting rating for ${username}: ${err} `);
@@ -61,7 +59,6 @@ async function getActiveItems(username) {
     const resp = await axios.get(
       `http://127.0.0.1:8000/items/get_by_username/${username}`
     );
-    //console.log(resp.data)
     const items = resp.data;
     return items;
   } catch (err) {
@@ -72,7 +69,7 @@ async function getActiveItems(username) {
 async function getClaimedItems(username) {
   try {
     const resp = await axios.get(
-      `http://127.0.0.1:8000/items/get_by_username/claimed${username}`
+      `http://127.0.0.1:8000/items/get_by_username/claimed/${username}`
     );
     const items = resp.data;
     return items;
@@ -83,6 +80,7 @@ async function getClaimedItems(username) {
 
 async function postEditProfile(data) {
   try {
+    
     const resp = await axios.post("http://127.0.0.1:8000/user/edit", data);
     if (resp.data.Error) {
       return resp.data.Error;
@@ -96,7 +94,12 @@ async function postEditProfile(data) {
 
 async function postLogOut(data) {
   try {
-    const resp = await axios.post("http://127.0.0.1:8000/user/logout", data);
+    
+    const resp = await axios.post("http://127.0.0.1:8000/user/logout", data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    });
     if (resp.data.Error) {
       return resp.data.Error;
     } else {

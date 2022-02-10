@@ -1,39 +1,34 @@
-
 /**
  * @jest-environment jsdom
  */
 
- import { render, screen } from '@testing-library/react';
- import userEvent from '@testing-library/user-event'
- import React, {useState} from 'react';
+ import { default as NavBar } from ".";
+ import { render, screen } from "@testing-library/react";
+ import "@testing-library/jest-dom";
+ import { MemoryRouter } from "react-router-dom";
+ import {BrowserRouter as Router} from "react-router-dom"
 
- import { NavBar } from '../index';
- 
- const mockedUsedNavigate = jest.fn();
- const mockedUseLocation = jest.fn()
- 
- jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
-   useNavigate: () => mockedUsedNavigate,
-   useLocation: () => mockedUseLocation
- }));
 
- describe('navbar', ()=>{
+ describe("NavBar", () => {
+    let mockFunction;
+    beforeEach(() => {
+      mockFunction = jest.fn();
+      // eslint-disable-next-line testing-library/no-render-in-setup
+      render(
+        
+          <NavBar />,
+        
+        { wrapper: MemoryRouter }
+      );
+    });
 
-    test('renders', ()=>{
-        const logout = jest.fn()
-        const username = 'test'
-        render(<NavBar username={username} logOut={logout}/>)
-        const nav = screen.getByLabelText('navbar')
-        expect(nav).toBeTruthy()
-    })
+    test("It renders the nav div", () => {
+        let div = screen.getByRole("nav");
+        expect(div).toBeInTheDocument();
+      });
 
-    test('renders', ()=>{
-        const logout = jest.fn()
-        const username = null
-        render(<NavBar username={username} logOut={logout}/>)
-        const nav = screen.getByLabelText('navbar')
-        expect(nav).toBeTruthy()
-    })
-
- })
+      test("it renders", () => {
+        const navigation = screen.getByRole("nav");
+        expect(navigation.textContent).toMatch("LogoCreate ListingSign UpLogin ");
+      });
+    });

@@ -16,11 +16,10 @@ export default function ProductCard({ category, map, mapboxgl }) {
   const [click, setClick] = useState(false)
   const [prodId, setProdId] = useState()
   const [favData, setFavData] = useState([])
-  const navigate = useNavigate()
 
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
-
       setImage(category.image)
       document.querySelectorAll(".mapboxgl-marker").forEach(map => {
         map.remove()

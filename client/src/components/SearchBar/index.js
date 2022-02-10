@@ -17,15 +17,12 @@ const SearchBar = ({setCategory}) => {
     const handleSearch = async (e) => {
         e.preventDefault();
         const queryVal = query.current.value;
-        console.log(queryVal)
         // send value to the fetch function 
         let data = await getSearch(queryVal, category) 
-        console.log("data = ", data)
         setCategory(data)
     }
 
     const handleChange = (e) => {
-        console.log(e.target.value)
         setCat(e.target.value);
     };
 
