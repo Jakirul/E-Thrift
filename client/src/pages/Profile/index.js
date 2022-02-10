@@ -19,6 +19,7 @@ import {
   // Messages,
 } from "../../components";
 import "./style.css";
+import defaultProfileImg from "../../assets/default-profile.png";
 
 const Profile = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +43,6 @@ const Profile = () => {
   const params = useParams();
   const isCurrentUser = params.isCurrentUser;
 
-
   useEffect(() => {
     isMounted.current = true;
 
@@ -59,7 +59,19 @@ const Profile = () => {
           setUsername(user.username);
           setEmail(user.email);
           setPhoneNumber(user.phone_number);
-          setAvatarUrl(`https://res.cloudinary.com/deizaqii7/${user.avatar_url}`);
+
+          // check for null avatar 
+          if (
+            user.avatar_url === null ||
+            user.avatar_url === "image/upload/null"
+          ) {
+            setAvatarUrl(defaultProfileImg);
+          } else {
+            setAvatarUrl(
+              `https://res.cloudinary.com/deizaqii7/${user.avatar_url}`
+            );
+          }
+
           setRating(fetchedRating.average_rating);
           setRatingCount(fetchedRating.total);
           setIsLoading(false);
@@ -118,11 +130,7 @@ const Profile = () => {
       {!isLoading && (
         <div className="profile-container">
           <div className="avatar-container">
-            <img
-              src={avatarUrl}
-              alt="Profile"
-              className="avatar-img"
-            />
+            <img src={avatarUrl} alt="Profile" className="avatar-img" />
             <h1>{username}</h1>
             <div className="rating-container">
               <Rating ratingValue={rating * 20} readonly />

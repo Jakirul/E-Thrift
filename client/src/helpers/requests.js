@@ -69,7 +69,7 @@ async function getActiveItems(username) {
 async function getClaimedItems(username) {
   try {
     const resp = await axios.get(
-      `http://127.0.0.1:8000/items/claimed_by_username/${username}`
+      `http://127.0.0.1:8000/items/get_by_username/claimed/${username}`
     );
     const items = resp.data;
     return items;
