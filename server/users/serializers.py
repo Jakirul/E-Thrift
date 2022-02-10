@@ -16,7 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
 
-    phone_number = serializers.IntegerField()
+    phone_number = serializers.CharField()
     avatar_url = serializers.ImageField(required=False, default="image/upload/v1644240099/xfoxtgyalwhtan8cn7bp.png")
     password = serializers.CharField(write_only=True)
     password_confirmation = serializers.CharField(write_only=True)

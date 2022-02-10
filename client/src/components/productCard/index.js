@@ -16,11 +16,10 @@ export default function ProductCard({ category, map, mapboxgl }) {
   const [click, setClick] = useState(false)
   const [prodId, setProdId] = useState()
   const [favData, setFavData] = useState([])
-  const navigate = useNavigate()
 
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
-
       setImage(category.image)
       document.querySelectorAll(".mapboxgl-marker").forEach(map => {
         map.remove()
@@ -60,7 +59,7 @@ export default function ProductCard({ category, map, mapboxgl }) {
       new mapboxgl.Marker()
         .setLngLat(value)
         .setPopup(new mapboxgl.Popup({ offset: 25 })
-          .setHTML(`<h3>${cat.name}</h3><p>${cat.description}</p>`))
+          .setHTML(`<h3>${cat.name}</h3><p>${cat.description}</p><a href="http://localhost:3000/view/${cat.id}">Go to listing</a>`))
         .addTo(map.current);
 
 

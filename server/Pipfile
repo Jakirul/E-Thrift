@@ -12,6 +12,7 @@ django-cors-headers = "*"
 Django = "*"
 Pillow = "*"
 atomicwrites = "*"
+django-phone-field = "*"
 
 [dev-packages]
 pytest = "*"

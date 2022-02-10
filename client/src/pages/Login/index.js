@@ -10,31 +10,31 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setUsername } = useContext(UserContext)
+  const { setUsername } = useContext(UserContext);
   const navigate = useNavigate();
 
   /**
    * Requests an authorized log in. Sets local storage user variables
    * upon success and navigates to previous page user was on.
    */
-  
+
   async function requestLogin(e) {
     try {
       e.preventDefault();
       // obtain access and refresh tokens
-      const {data} = await postLogin({
+      const { data } = await postLogin({
         email,
         password,
       });
-      console.log(data)
+      
       const user = jwt_decode(data.access);
-      localStorage.setItem('authTokens', JSON.stringify(data))
+      localStorage.setItem("authTokens", JSON.stringify(data));
       localStorage.setItem("username", user.username);
-      localStorage.setItem('email', user.email);
+      localStorage.setItem("email", user.email);
       setUsername(user.username);
       navigate("/");
     } catch (err) {
-      localStorage.clear()
+      localStorage.clear();
       console.warn(`Error requesting login: ${err}`);
     }
   }
@@ -43,28 +43,45 @@ const Login = () => {
     <div className="login-page">
       <form onSubmit={requestLogin}>
         <h1>Sign-in</h1>
-        <label label="email" aria-label="email">
-          Email
-        </label>
+        <div>
+          <label label="email" aria-label="email">
+            Email
+          </label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-label="email-input"
+            required
+          />
+        </div>
+        <div>
+          <label label="password" aria-label="password" type="password">
+            Password
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            aria-label="password-input"
+            required
+          />
+        </div>
+
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          aria-label="email-input"
-          required
+          type="submit"
+          id="login-btn"
+          className="submit-btn"
+          value="Sign In"
         />
-        <label label="password" aria-label="password" type="password">
-          Password
-        </label>
-        <input
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          aria-label="password-input"
-          required
-        />
-        <input type="submit" id="login-btn" className="submit-btn" value="Sign In" />
-        <button className="register-btn" value="Register" onClick={() => navigate("/register")}>Register</button>
+
+        <button
+          className="submit-btn"
+          value="Register"
+          onClick={() => navigate("/register")}
+        >
+          Register
+        </button>
       </form>
     </div>
   );

@@ -9,7 +9,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     email = models.EmailField(unique=True)
-    phone_number = models.IntegerField(null=True, blank=True)
+    phone_number = models.CharField(max_length=20,null=True, blank=True)
     avatar_url = CloudinaryField('image', null=True, blank=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

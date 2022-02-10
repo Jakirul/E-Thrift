@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import CLaimedItemCard from '../ClaimedItemCard';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -6,7 +6,22 @@ import './style.css';
 
 const ClaimedItems = ({ setActiveFragment, claimedItems, isLoading }) => {
 
-    const renderItems = claimedItems.map((item) => { 
+    
+    const [image, setImage] = useState([])
+  
+  
+  useEffect(() => {
+    const fetchData = async () => {
+
+      setImage(claimedItems.image)
+      
+    }
+
+    fetchData()
+  }, [claimedItems])
+
+    const renderItems = claimedItems.data && claimedItems.data.map((item, key) => { 
+        
         return (
             <CLaimedItemCard 
                 id={item.id}
@@ -15,26 +30,31 @@ const ClaimedItems = ({ setActiveFragment, claimedItems, isLoading }) => {
                 price={item.price}
                 category={item.category}
                 description={item.description}
-                image_url={item.image_url}
-                image_id={item.image_id}
+                image={image}
+                key={key}
             />
         )
     });
 
     return (
         <>
-            <h1>Claimed Items</h1>
+            <div className="active-items-header">
+                <ArrowBackIcon className="go-back-btn" onClick={() => setActiveFragment("")} />
+            <h2>Claimed Items</h2>
+        </div>
             {isLoading &&
                 <div className='loading-listings'>
                     ...loading
                 </div>
             }
-            {!isLoading && 
+            {!isLoading && (
                 <div className="claimed-items-container">
+                    
                     {renderItems}
-                </div>
+            </div>
+            )
+                
             }
-            <ArrowBackIcon onClick={setActiveFragment("")} />
         </>
     )
 }

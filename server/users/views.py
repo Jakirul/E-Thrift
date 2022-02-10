@@ -93,3 +93,23 @@ def add_rating(request, username, rating):
             return Response({'Error': 'Rating must be between 1-5'})
     except Exception as e:
         return Response({'Error': f'Cannot add a rating - {e}'})
+
+@api_view(['POST'])
+def edit_account(request):
+    try:
+        print(request.data)
+        user_acc = User.objects.get(username=request.data["current_username"])
+
+        if user_acc:
+            user_acc.first_name = request.data['first_name']
+            user_acc.last_name = request.data['last_name']
+            # user_acc.username = request.data["body"]['username']
+            user_acc.phone_number = request.data['phone_number']
+            
+            if request.data["avatar_url"] != 'null':
+                user_acc.avatar_url = request.data['avatar_url']
+            user_acc.save()
+            return Response({'Success': f'Successfully edited a profile'})
+
+    except Exception as e:
+        return Response({'Error': f'Cannot edit an account! - {e}'})

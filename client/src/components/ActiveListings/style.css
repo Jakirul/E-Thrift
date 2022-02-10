@@ -34,13 +34,19 @@
 }
 
 .active-listings-container {
-    justify-content: center !important;
-    align-content: center !important;
-    gap: 4px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.active-card-wrapper > div {
+    width: 400px;
+}
+
+.active-card-wrapper {
+    width: auto; 
 }
 
 .active-item-card {

@@ -9,6 +9,10 @@
     height: 200px;
 }
 
+.cardStyle > div {
+    width: 400px;
+}
+
 .cardStyle > div > div > div > a {
     cursor: pointer;
 }

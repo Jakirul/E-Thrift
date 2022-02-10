@@ -29,13 +29,7 @@
     padding: 30px;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    width: 50%;
-}
-
-.edit-profile-container > form > div > input[type='text'] {
-    height: 30px;
-    border: 1px solid black;
-    border-radius: 0.5em;
+    width: 400px;
 }
 
 .edit-profile-container > form > input[type='submit'] {
@@ -65,15 +59,26 @@
     margin-top: 1rem;
 }
 
-.edit-profile-container > form > div:nth-last-child(2) > input {
-    width: 220px;
-    margin-left: .5rem;
+.remove-profile-btn {
+    width: 200px;
+    margin: 0 auto;
 }
 
+
 .change-image-container {
+    display: flex;
+    flex-direction: column;
     align-self: center;
 }
 
-.submit-btn {
-    margin-top: 1rem;
+.image-input-wrapper {
+    margin: 0 auto 1rem auto;
+}
+
+.image-input-wrapper > * {
+    margin-top: .5rem;
+}
+
+.image-input-wrapper > input {
+    width: 220px;
 }

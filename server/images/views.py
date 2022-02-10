@@ -50,12 +50,11 @@ def add(req, item_id):
 def delete(req):
     try:
         item = Item.objects.get(pk=req.data['id'])
-        time.sleep(1)
         images = Images.objects.get(item=item, img_url=req.data["image"])
         print(req.data["image"])
         cloudinary.uploader.destroy(images.img_url.public_id)
         images.delete()
         return Response({'Success': 'Image deletion successful'})
     except Exception as e:
-        return Response({'Error:': f'{e}'})
+        return Response({'Error:': f'Cannot delete - {e}'})
 

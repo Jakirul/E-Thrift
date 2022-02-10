@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+}
+
+
 .home-container {
   margin-top: 2px;
   text-align: center;

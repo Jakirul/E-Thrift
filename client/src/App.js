@@ -7,7 +7,7 @@ import {
   EditListing,
   Home,
   Login,
-  // Product,
+  ShowPage,
   Profile,
   Register,
   Search,
@@ -39,7 +39,6 @@ const App = () => {
 
   useEffect(() => {
     const storageEventHandler = () => {
-      console.log("storage updated");
       setUsername(localStorage.getItem("username") || null);
     };
 
@@ -97,7 +96,7 @@ const App = () => {
           <Route path="/" exact element={<Home />}></Route>
           <Route path="/update/:id" element={<EditListing />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          {/* <Route path="/product" element={<Product />}></Route> */}
+          <Route path="/view/:id" element={<ShowPage />}></Route>
           <Route path="/profile/:isCurrentUser" element={<Profile />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/search" element={<Search />}></Route>

@@ -8,6 +8,7 @@ const EditListing = () => {
     const [data, setData] = useState([])
     const [photo, setPhoto] = useState([])
     const [error, setError] = useState()
+    const [success, setSuccess] = useState()
     const navigate = useNavigate()
     const { id } = useParams()
 
@@ -52,8 +53,6 @@ const EditListing = () => {
             }
             if (checkedCount > 1) {
                 e.target.deleteImages.forEach((image => {
-                    console.log(image.value, image.checked, image.id)
-
                     let formData2 = new FormData(e.target);
                     formData2.append("id", image.id)
                     formData2.append("image", image.value)
@@ -66,31 +65,54 @@ const EditListing = () => {
                             
                             let fetching = await fetch("http://127.0.0.1:8000/images/delete/", options1);
                             let jsonfetch = await fetching.json();
-                            console.log("deleting111 =>", jsonfetch)
+                            console.log("1 => ", jsonfetch)
                             
                         })()
                     }
                 }))
             } else {
-
                 let formData3 = new FormData(e.target);
                 
-                if (e.target.deleteImages.checked) {
-                    console.log("img delete = ", e.target.deleteImages.value)
-                }
                 formData3.append("id",  id)
                 formData3.append("image",  e.target.deleteImages.value)
-                if ( e.target.deleteImages.checked) {
-                    (async () => {
-                        let options1 = {
-                            method: "PUT",
-                            body: formData3
+                
+                if (e.target.deleteImages && e.target.deleteImages.length > 1) {
+                    let formData4 = new FormData(e.target);
+                    formData4.append("id", id)
+                    e.target.deleteImages.forEach(image => {
+                        if (image.checked) {
+                            console.log(image.value);
+                            (async () => {
+                                formData4.append("image", image.value)
+                                let options1 = {
+                                    method: "PUT",
+                                    body: formData4
+                                }
+                                
+                                let fetching = await fetch("http://127.0.0.1:8000/images/delete/", options1);
+                                let jsonfetch = await fetching.json();
+                                console.log("2 => ", jsonfetch)
+                            })()
                         }
-                        let fetching = await fetch("http://127.0.0.1:8000/images/delete/", options1);
-                        let jsonfetch = await fetching.json();
-                        console.log("deleting222 =>", jsonfetch)
-                    })()
+                    })
+                    
+                } else {
+                    console.log("here2")
+                    console.log(e.target.deleteImages.checked)
+                    if (e.target.deleteImages.checked) {
+                        (async () => {
+                            let options1 = {
+                                method: "PUT",
+                                body: formData3
+                            }
+                            let fetching = await fetch("http://127.0.0.1:8000/images/delete/", options1);
+                            let jsonfetch = await fetching.json();
+                            console.log(jsonfetch)
+                            console.log("2 => ", jsonfetch)
+                        })()
+                    }
                 }
+                
 
             }}
 
@@ -121,11 +143,28 @@ const EditListing = () => {
 
             let options = {
                 method: "POST",
-                body: formData4,
+                body: formData,
             };
 
-            await fetch("http://127.0.0.1:8000/items/update", options)
-            // navigate(`/view/${id}`)
+            const data = await fetch("http://127.0.0.1:8000/items/update", options)
+            const jsondata1 = await data.json();
+            
+            if (jsondata1.Success) {
+                setSuccess("Successfully updated a listing!")
+                setError()
+                
+                setTimeout(() => {
+                    navigate(`/view/${id}`)
+                }, 1000)
+            } else if (jsondata1.Error) {
+                setError("Error trying to update a listing - please try again")
+                setSuccess()
+
+                setTimeout(() => {
+                    navigate(`/update/${id}`)
+                }, 1000)
+            }
+            
         }
 
     }
@@ -174,6 +213,7 @@ const EditListing = () => {
 
                     <input aria-label='submit' type="submit" value="Update Listing" />
                 </form>
+                
 
                 :
                 null

@@ -1,10 +1,10 @@
-import { default as Login } from '.'
-import { screen, render, fireEvent, waitFor } from '@testing-library/react';
-import * as ReactRouterDom from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
-import jwt_decode from 'jwt-decode';
+// import { default as Login } from '.'
+// import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+// import * as ReactRouterDom from 'react-router-dom';
+// import userEvent from '@testing-library/user-event';
+// import jwt_decode from 'jwt-decode';
 
-import * as helpers from '../../helpers/requests';
+// import * as helpers from '../../helpers/requests';
 
 jest.mock("jwt-decode", () => jest.fn());
 
@@ -23,6 +23,12 @@ jest.mock('react', ()=>({
 }));
 
 
+// const mockNavigate = jest.fn();
+
+// jest.mock('react-router-dom', () => ({
+//     useNavigate: () => mockNavigate
+// }));
+
 const mockLoginResponse = {
     data: {
         access: 'jreogjiperog',
@@ -36,6 +42,26 @@ describe('Login', () => {
         const heading = screen.getByRole("heading");
         expect(heading.textContent).toMatch("Sign-in");
     });
+
+// describe('Login', () => {
+//     test('it renders the page', () => {
+//         render(<Login />, { wrapper: ReactRouterDom.MemoryRouter });
+//         const heading = screen.getByRole("heading");
+//         expect(heading.textContent).toMatch("Sign-in");
+//     });
+
+
+//     test('it allows a user to make a log in request', async () => {
+//         render(<Login />, { wrapper: ReactRouterDom.MemoryRouter });
+//         const submitBtn = screen.getByRole("button", { name: "Sign In" });
+//         const loginSpy = jest.spyOn(helpers, 'postLogin');
+//         loginSpy.mockReturnValue(mockLoginResponse);
+//         userEvent.click(submitBtn);
+
+
+//         await waitFor(() => {
+//             expect(jwt_decode).toHaveBeenCalled();
+//         })
 
     test('it allows a user to make a log in request', async () => {
         render(<Login />);
@@ -52,20 +78,21 @@ describe('Login', () => {
             expect(jwt_decode).toHaveBeenCalled();
         });
 
-        await waitFor(() => {
-            expect(mockNavigate).toHaveBeenCalled();
-        });
-    });
+
+//         await waitFor(() => {
+//             expect(mockNavigate).toHaveBeenCalled();
+//         });
+//     });
 
     test('it navigates to the register page on button click', async () => {
         render(<Login />);
         const registerBtn = screen.getByRole("button", { name: "Register" });
         userEvent.click(registerBtn);
 
-        await waitFor(() => {
-            expect(mockNavigate).toHaveBeenCalled();
-        });
-    });
+//         await waitFor(() => {
+//             expect(mockNavigate).toHaveBeenCalled();
+//         });
+//     });
 
     test('it allows users to input email', () => {
         render(<Login />);
