@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom'
 import defaultProfileImg from "../../assets/default-profile.png";
 import "./style.css";
 import { postEditProfile } from "../../helpers/requests";
-import { useNavigate } from "react-router-dom";
 
 const EditProfile = ({
   setActiveFragment,

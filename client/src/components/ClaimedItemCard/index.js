@@ -21,7 +21,7 @@ function ClaimedItemCard({
   const navigate = useNavigate;
 
   const handleShowDetails = () => {
-    navigate(`/product-show/:${id}`);
+    navigate(`/view/:${id}`);
   };
 
   return (

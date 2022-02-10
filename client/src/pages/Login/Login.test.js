@@ -50,6 +50,7 @@ describe('Login', () => {
         await waitFor(() => {
             expect(jwt_decode).toHaveBeenCalled();
         });
+    });
 
 
 //         await waitFor(() => {
@@ -61,6 +62,7 @@ describe('Login', () => {
         render(<Login />);
         const registerBtn = screen.getByRole("button", { name: "Register" });
         userEvent.click(registerBtn);
+    });
 
 //         await waitFor(() => {
 //             expect(mockNavigate).toHaveBeenCalled();
