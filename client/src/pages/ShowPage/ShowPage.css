@@ -1,0 +1,185 @@
+.ShowPage {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 10px;
+    gap: 10px;
+    
+}
+
+.ShowPage > div {
+    
+    width: 50%;
+}
+.ShowPage > div > div > img {
+    width: 90%;
+}
+
+.ShowPage > div > .buttons > form > input[type='submit'] {
+    margin-top: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #D11A2A;
+    font-weight: bold;
+    color: white;
+}
+
+.ShowPage > div > .buttons > form > input[type='submit']:hover {
+    background-color: #bd1725;
+}
+
+.ShowPage > div > .error {
+    color: red;
+    font-weight: bold;
+}
+
+.ShowPage > div > .success {
+    color: green;
+    font-weight: bold;
+}
+
+.ShowPage > div:nth-of-type(2) {
+    text-align: left;
+}
+
+.ShowPage > div:nth-of-type(2) > p:nth-of-type(1) {
+    cursor: pointer;
+}
+.claimed{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.ShowPage > div:nth-of-type(2) > p:nth-of-type(1):hover {
+
+    font-weight: bold;
+}
+
+.ShowPage > div > .button-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px;
+}
+
+.ShowPage > div > .button-list > button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #45a33e;
+    font-weight: bold;
+    color: white;
+}
+
+.ShowPage > div > .button-list > div {
+    display: flex;
+    gap: 15px;
+}
+
+.ShowPage > div > .button-list > div > form  > button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #45a33e;
+    font-weight: bold;
+    color: white;
+}
+
+.ShowPage > div > .button-list > form > button:hover {
+    background-color: #3d9237;
+}
+
+
+.ShowPage > div > .button-list > button:hover {
+    background-color: #3d9237;
+}
+
+.ShowPage > div:nth-of-type(2) > p > span {
+    font-weight: bold;
+}
+
+
+.ShowPage > div > .buttons > button {
+    margin-top: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #45a33e;
+    font-weight: bold;
+    color: white;
+}
+
+.ShowPage > div > .buttons > button:hover {
+    background-color: #3d9237;
+}
+
+.ShowPage > div > textarea {
+    resize: none;
+    height: 200px;
+    padding: 20px;
+    width: 85%;
+    border-radius: 0.5em;
+}
+
+.ShowPage > div > .map-container {
+    height: 300px;
+    width: 90%;
+}
+
+.ShowPage > div > .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media screen and (min-width: 2543px) {
+    .ShowPage {
+        width: 2000px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .ShowPage {
+        flex-direction: column;
+    }
+
+    .ShowPage > div {
+        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .ShowPage > div  > .map-container {
+        width: 100%;
+    }
+
+
+}
+
+.message-btn{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #45a33e;
+    font-weight: bold;
+    color: white;
+}
+
+.hide{
+    display:none;
+  }
+.show{
+display:block;
+}
+
+
+
+
+
+
+
+
+

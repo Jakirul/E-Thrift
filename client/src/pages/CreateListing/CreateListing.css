@@ -1,0 +1,53 @@
+.CreateListing > .error {
+    color: red;
+    font-weight: bold;
+}
+
+.CreateListing > .success {
+    color: green;
+    font-weight: bold;
+}
+
+.CreateListing > form {
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 50%;
+}
+
+.CreateListing > form > div > input {
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+
+.CreateListing > form > div > textarea {
+    resize: none;
+    height: 200px;
+    padding: 20px;
+    border-radius: 0.5em;
+}
+
+.CreateListing > form > h1 {
+    margin-top: 0;
+}
+
+.CreateListing > form > input[type='submit'] {
+    margin-top: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #4BB543;
+    font-weight: bold;
+    color: white;
+}
+
+.CreateListing > form > input[type='submit']:hover {
+    background-color: #45a33e;
+}
+
+.CreateListing > form > div {
+    display: flex;
+    flex-direction: column;
+}

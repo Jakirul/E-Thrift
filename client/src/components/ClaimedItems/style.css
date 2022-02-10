@@ -1,0 +1,24 @@
+.claimed-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.claimed-items-container > div > div > button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #45a33e;
+    font-weight: bold;
+    color: white;
+}
+
+.claimed-items-container > div {
+    width: 400px;
+}
+
+.claimed-items-container > div > div > button {
+    margin: 0 auto;
+}

@@ -1,0 +1,84 @@
+.edit-profile-header > h2 {
+    font-size: 20px;
+    display: block;
+    margin: 2rem 0 2rem 0;
+}
+
+.edit-profile-header {
+    position: relative;
+    width: fit-content;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.go-back-button {
+    position: absolute;
+    top: 32px;
+    left: -35px;
+    cursor: pointer !important;
+    transition: opacity .5s ease-out !important;
+    -moz-transition: opacity .5s ease-out !important;
+    -webkit-transition: opacity .5s ease-out !important;
+    -o-transition: opacity .5s ease-out !important;
+}
+
+.edit-profile-container > form {
+    margin: 10px auto 50px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 400px;
+}
+
+.edit-profile-container > form > input[type='submit'] {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #4BB543;
+    font-weight: bold;
+    color: white;
+}
+
+.edit-profile-container  > form > input[type='submit']:hover {
+    background-color: #45a33e;
+}
+
+.edit-profile-container > form > div:not(:nth-last-child(2)) {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: .3rem;
+}
+
+.edit-profile-container > form > div:nth-last-child(2) {
+    justify-content: center;
+    display: flex;
+    margin: .5rem auto 0 auto;
+    margin-top: 1rem;
+}
+
+.remove-profile-btn {
+    width: 200px;
+    margin: 0 auto;
+}
+
+
+.change-image-container {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.image-input-wrapper {
+    margin: 0 auto 1rem auto;
+}
+
+.image-input-wrapper > * {
+    margin-top: .5rem;
+}
+
+.image-input-wrapper > input {
+    width: 220px;
+}

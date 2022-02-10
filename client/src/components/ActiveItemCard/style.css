@@ -1,0 +1,9 @@
+.active-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: red;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+}
