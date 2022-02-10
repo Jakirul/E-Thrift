@@ -151,11 +151,7 @@ const ShowPage = () => {
             // setTimeout(() => window.location.reload(), 500)
         }
     }
-
-  
-   
-
-
+    
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
