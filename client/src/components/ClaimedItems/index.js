@@ -50,4 +50,5 @@ const ClaimedItems = ({ setActiveFragment, claimedItems, isLoading }) => {
         </>
     )
 }
+
 export default ClaimedItems;

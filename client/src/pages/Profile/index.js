@@ -43,7 +43,10 @@ const Profile = () => {
   const params = useParams();
   const isCurrentUser = params.isCurrentUser;
 
+<<<<<<< HEAD
+=======
   console.log(isCurrentUser);
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
   useEffect(() => {
     isMounted.current = true;
 

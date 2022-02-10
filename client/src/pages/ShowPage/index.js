@@ -156,12 +156,12 @@ const ShowPage = () => {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
             items: 1,
-            slidesToSlide: 3 // optional, default to 1.
+            slidesToSlide: 1 // optional, default to 1.
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
             items: 1,
-            slidesToSlide: 2 // optional, default to 1.
+            slidesToSlide: 1 // optional, default to 1.
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
@@ -189,24 +189,23 @@ const ShowPage = () => {
                         customTransition="all .5"
                         transitionDuration={500}
                         containerClass="carousel-container"
-                        removeArrowOnDeviceType={["tablet", "mobile"]}
+                        // removeArrowOnDeviceType={["tablet", "mobile"]}
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px"
                     >
                 {image && image.length
-                    ?
-                    
-                    image && image.map((image, key) => {
+                    ?    
+                    image.map((image, key) => {
                           imageString = `https://res.cloudinary.com/deizaqii7/${image.img_url}`
                           return (
                               
                             <div key={key}>
-                                {/* <Image 
+                                <Image 
                                     draggable={true}
                                     style={{ width: "100%", height: "80%" }}
                                     src={"https://res.cloudinary.com/deizaqii7/" + image.img_url}
-                                /> */}
-                                    <img src={"https://res.cloudinary.com/deizaqii7/" + image.img_url} />
+                                />
+                                    {/* <img src={"https://res.cloudinary.com/deizaqii7/" + image.img_url} /> */}
                             </div>
                             
                           )

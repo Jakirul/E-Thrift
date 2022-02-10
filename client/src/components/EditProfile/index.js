@@ -4,6 +4,10 @@ import {useNavigate} from 'react-router-dom'
 import defaultProfileImg from "../../assets/default-profile.png";
 import "./style.css";
 import { postEditProfile } from "../../helpers/requests";
+<<<<<<< HEAD
+
+=======
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
 const EditProfile = ({
   setActiveFragment,
   email,
@@ -19,7 +23,12 @@ const EditProfile = ({
   setAvatarUrl,
 }) => {
   const [avatarImg, setAvatarImg] = useState(null);
+<<<<<<< HEAD
+
+  const navigate = useNavigate();
+=======
   const navigate = useNavigate()
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
   const isMounted = useRef(true);
   const fileInputRef = useRef();
   const currentImg = useRef(avatarUrl); // the user's current img
@@ -173,13 +182,18 @@ const EditProfile = ({
           />
         </div>
         <div className="change-image-container">
+<<<<<<< HEAD
+          <button
+            aria-label='remove-img-btn'
+=======
           {/* <button
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
             className="remove-profile-btn"
             onClick={removeCurrentImage}
             disabled={avatarUrl === defaultProfileImg}
           >
             Remove Current Image
-          </button> */}
+          </button> 
           <div className="image-input-wrapper">
             <label htmlFor="image">Change Profile Picture</label>
             <input

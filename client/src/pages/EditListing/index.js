@@ -130,7 +130,6 @@ const EditListing = () => {
 
         const data2 = await fetch(`http://127.0.0.1:8000/images/add/${id}/`, options3)
         const jsondata = await data2.json()
-        console.log(jsondata)
 
         let name = form.name.value.trim()
         let description = form.description.value.trim()
@@ -212,9 +211,12 @@ const EditListing = () => {
                     </div>
 
                     <input aria-label='submit' type="submit" value="Update Listing" />
+<<<<<<< HEAD
+=======
                     <p className="error">{error}</p>
                     <p className="success">{success}</p>
 
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
                 </form>
                 
 
