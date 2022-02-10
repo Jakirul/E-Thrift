@@ -52,7 +52,7 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <form onSubmit={requestLogin}>
+      <form className="LoginForm" onSubmit={requestLogin}>
         <h1>Sign-in</h1>
         <div>
           <label label="email" aria-label="email">

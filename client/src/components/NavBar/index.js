@@ -6,11 +6,14 @@ import {Nav, Navbar} from 'react-bootstrap';
 
 function NavBar({ username, logOut }) {
   return (
+
     <Navbar aria-label='navbar' expand="lg" bg="dark" variant="dark">
-      
-      <Nav.Link as={NavLink} style={{color: "white"}} to="">E-Thrift</Nav.Link>
+       <Navbar.Collapse>
+      <Nav.Link as={NavLink} style={{color: "white"}}   to="">E-Thrift</Nav.Link>
+
       {username !== null && (
         <>
+       
           <Nav.Link as={NavLink} to="/search">Find Products</Nav.Link>
           <Nav.Link as={NavLink} to="/create">Create Listing</Nav.Link>
           <Nav.Link as={NavLink} to={`/profile/true`}>Profile</Nav.Link>
@@ -23,6 +26,7 @@ function NavBar({ username, logOut }) {
           <Nav.Link as={NavLink} style={{color: "white"}} to="/login">Login </Nav.Link>
         </>
       )}
+      </ Navbar.Collapse> 
     </Navbar>
   );
 }

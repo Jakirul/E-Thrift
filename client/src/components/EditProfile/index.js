@@ -4,7 +4,10 @@ import {useNavigate} from 'react-router-dom'
 import defaultProfileImg from "../../assets/default-profile.png";
 import "./style.css";
 import { postEditProfile } from "../../helpers/requests";
+<<<<<<< HEAD
 
+=======
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
 const EditProfile = ({
   setActiveFragment,
   email,
@@ -13,18 +16,22 @@ const EditProfile = ({
   lastName,
   setLastName,
   username,
+  setUsername,
   phoneNumber,
   setPhoneNumber,
   avatarUrl,
   setAvatarUrl,
 }) => {
   const [avatarImg, setAvatarImg] = useState(null);
+<<<<<<< HEAD
 
   const navigate = useNavigate();
+=======
+  const navigate = useNavigate()
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
   const isMounted = useRef(true);
   const fileInputRef = useRef();
   const currentImg = useRef(avatarUrl); // the user's current img
-
   /**
    * Processes the selected file, asserting that it is a suitable image
    * and then sets the avatarImg state accordingly.
@@ -38,7 +45,6 @@ const EditProfile = ({
       setAvatarImg(file);
     }
   };
-
   const removeCurrentImage = (e) => {
     e.preventDefault();
     if (avatarImg !== null) {
@@ -49,20 +55,14 @@ const EditProfile = ({
       fileInputRef.current.value = "";
     }
   };
-
   /**
    * Clean up component after unmounting to avoid memory leaks.
    */
   useEffect(() => {
-    if (!localStorage.getItem("username") || !localStorage.getItem("authTokens")) {
-      navigate("/")
-  }
-
     return () => {
       isMounted.current = false;
     };
   });
-
   /**
    * Sets the preview image whenever the selected image (avatarImg)
    * is changed by the user.
@@ -80,17 +80,16 @@ const EditProfile = ({
       setAvatarUrl(defaultProfileImg);
     }
   }, [avatarImg, setAvatarUrl]);
-
   const submitEditProfile = async (e) => {
     try {
       if (isMounted) {
         e.preventDefault();
-
         let data = new FormData();
         data.append("first_name", firstName);
         data.append("last_name", lastName);
+        data.append("current_username", localStorage.getItem("username"));
+        data.append("username", username);
         data.append("phone_number", phoneNumber);
-
         if (e.target.image.files.length > 0) {
           data.append("avatar_url", e.target.image.files[0]);
         } else {
@@ -107,7 +106,6 @@ const EditProfile = ({
       console.warn(`Error editing user: ${username}`);
     }
   };
-
   return (
     <div className="edit-profile-container">
       <div className="edit-profile-header">
@@ -117,7 +115,6 @@ const EditProfile = ({
         />
         <h2>Edit Profile</h2>
       </div>
-
       <form onSubmit={submitEditProfile} aria-label="form" id="editform">
         <div>
           <label label="first-name" aria-label="first-name">
@@ -152,6 +149,7 @@ const EditProfile = ({
           <input
             type="text"
             value={username}
+            onChange={(e) => setUsername(e.target.value)}
             aria-label="username-input"
             disabled
             name="username"
@@ -184,8 +182,12 @@ const EditProfile = ({
           />
         </div>
         <div className="change-image-container">
+<<<<<<< HEAD
           <button
             aria-label='remove-img-btn'
+=======
+          {/* <button
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
             className="remove-profile-btn"
             onClick={removeCurrentImage}
             disabled={avatarUrl === defaultProfileImg}
@@ -213,5 +215,4 @@ const EditProfile = ({
     </div>
   );
 };
-
 export default EditProfile;

@@ -211,6 +211,12 @@ const EditListing = () => {
                     </div>
 
                     <input aria-label='submit' type="submit" value="Update Listing" />
+<<<<<<< HEAD
+=======
+                    <p className="error">{error}</p>
+                    <p className="success">{success}</p>
+
+>>>>>>> a616353a4f9246e97d3c6a90975847bac129faec
                 </form>
                 
 

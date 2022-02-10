@@ -53,17 +53,14 @@
   margin-left: 15px;
   color: rgb(0, 0, 0);
 }
-
-.home-container > button {
-  margin-left: 20px;
-}
-
 @media screen and (max-width: 800px){
 .home-container{
   background-image: url("../public/images/homeImage.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  background-blend-mode: lighten;
+  
 }
 }
 @media screen and (max-width: 800px) {
@@ -91,30 +88,104 @@
 .bg-grey{
   background-color: rgb(34, 33, 33);  /* navbar bg */
 }
-.card{
-  width: 100%;
-  height: 200px;
-  background: rgb(11, 175, 11);
-  color: rgb(139, 126, 212);
-  font-size: 30px;
-  margin: 20px;
-  /* displayig no. on card */
-  display: flex;  
-  justify-content: center;
-  align-items: center;
+
+.btn-warning{
+  position: static;
+  top:350px;
+  margin: 40px;
+  padding:20px;
 }
+
+
 .description{
   margin-left: 80px;
   margin-top: 100px;
 }
+
+@media screen and (max-width: 800px) {
+  .description {
+      /* background: url(../../../public/images/homeImage.png); */
+      margin-left: 50px;
+      margin-top: 300px;
+  }
+}
+
 .carousel{
   position: absolute;
   top:200px;
   padding:20px ;
 }
-.cardOne{
+
+
+
+.LoginForm{
+  position: static;
+	width: 80%;
+	display: grid;
+	justify-content: space-evenly;
+	/* padding: 40px; */
+	/* background-color: #88aaddb2; */
+  outline: #88aaddb2 solid 10px;
+	margin: 15px auto;
+	box-shadow: 7px 5px 3px rgba(161, 160, 160, 0.322);
+  border-radius: 10px;
+  padding-top: 30px;
+  padding-bottom: 100px;
+ 
+}
+.LoginForm h1 {
+ 
+    font-size: 20pt;
+
+    font-weight: bold;
+    padding-bottom: 50px;
+    
+}
+
+.register-page  h1{
+  font-size: 20pt;
+  font-weight: bold;
+}
+.RegisterForm {
+  position:static;
+  width: 20%;
+  display:grid;
+  justify-content: space-evenly;
+  padding: 20px;
+  /* background-color: #88aaddb2; */
+  
+  margin: 15px auto;
+  box-shadow: 7px 5px 3px rgba(161, 160,160,0.322);
+  border-radius: 10px;
+ 
+  outline: #88aaddb2 solid 10px;
+  
+}
+
+
+.submit-btn ,.register-btn{
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+  background-color: darkgrey;
+  margin-top: 20px;
+  
+  
+}
+
+.submit-btn:hover, .register-btn:hover{
+  background-color: #747272;
+}
+
+.Input{
+  padding: 2px;
+  border-radius: 10px;
+}
+
+
+/* .cardOne{
   margin: 20px;
-  /* displayig no. on card */
+  
   display: flex;  
   justify-content: center;
   align-items: center;
@@ -125,8 +196,8 @@
   width: 100%;
   height: 200px;
   margin: 20px;
-  /* displayig no. on card */
+ 
   display: flex;  
   justify-content: center;
   align-items: center;
-}
+} */

@@ -162,7 +162,7 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      <form onSubmit={submitRegister} aria-label="form">
+      <form className="RegisterForm " onSubmit={submitRegister} aria-label="form">
       <h1>Register</h1>
         <div className="profile-image-container">
           {previewImg !== defaultProfileImg && (
