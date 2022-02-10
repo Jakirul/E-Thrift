@@ -1,0 +1,54 @@
+.active-items-fragment {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.active-items-header {
+    width: fit-content;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.active-items-header > h2 {
+    font-size: 20px;
+    display: block;
+    margin: 2rem 0 2rem 0;
+}
+
+.go-back-btn {
+    position: absolute;
+    top: 32px;
+    left: -35px;
+    cursor: pointer !important;
+    transition: opacity .5s ease-out !important;
+    -moz-transition: opacity .5s ease-out !important;
+    -webkit-transition: opacity .5s ease-out !important;
+    -o-transition: opacity .5s ease-out !important;
+}
+
+.go-back-btn:hover {
+    opacity: .5 !important;
+}
+
+.active-listings-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.active-card-wrapper > div {
+    width: 400px;
+}
+
+.active-card-wrapper {
+    width: auto; 
+}
+
+.active-item-card {
+    position: relative;
+}

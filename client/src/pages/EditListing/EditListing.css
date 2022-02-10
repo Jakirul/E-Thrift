@@ -1,0 +1,67 @@
+.EditListing {
+    width: 50%;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.EditListing > h1 {
+    margin-top: 0;
+}
+
+.EditListing > form > div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.EditListing > form > div > label {
+    font-weight: bold;
+}
+
+.EditListing > form > div > input[type='text'] {
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+
+.EditListing > form > div > input[type='text']:focus, textarea:focus {
+    outline: none !important;
+    border:1px solid rgb(151, 216, 54);
+}
+
+
+.EditListing > form > div > textarea {
+    resize: none;
+    height: 200px;
+    padding: 20px;
+    border-radius: 0.5em;
+}
+
+.EditListing > form > div > input[type='file'] {
+    margin: 15px auto;
+}
+
+.EditListing > form > input[type='submit'] {
+    margin-top: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    background-color: #4BB543;
+    font-weight: bold;
+    color: white;
+}
+
+.EditListing > form > input[type='submit']:hover {
+    background-color: #45a33e;
+}
+
+
+
+.EditListing > form > .images {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+

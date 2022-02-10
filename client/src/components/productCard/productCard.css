@@ -1,0 +1,23 @@
+.productCard {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.productCard > div > div > img {
+    height: 200px;
+}
+
+.cardStyle > div {
+    width: 400px;
+}
+
+.cardStyle > div > div > div > a {
+    cursor: pointer;
+}
+
+.cardStyle > div > div > div > a:hover {
+    font-weight: bold;
+}
+
