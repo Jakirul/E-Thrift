@@ -6,11 +6,27 @@
 .error {
   color: red;
   font-weight: bold;
+  text-align: center;
+}
+
+.error-login {
+  margin: 10px 0 -20px 0;
+  color: red;
+  font-weight: bold;
+  text-align: center;
 }
 
 .success {
   color: green;
   font-weight: bold;
+  text-align: center;
+}
+
+.success-login {
+  margin: 10px 0 -20px 0;
+  color: green;
+  font-weight: bold;
+  text-align: center;
 }
 
 

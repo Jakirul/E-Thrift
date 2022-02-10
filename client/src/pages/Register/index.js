@@ -17,6 +17,8 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [avatarImg, setAvatarImg] = useState(null);
   const [previewImg, setPreviewImg] = useState(defaultProfileImg);
+  const [success, setSuccess] = useState()
+  const [error, setError] = useState()
 
   const navigate = useNavigate();
   const fileInputRef = useRef();
@@ -87,13 +89,22 @@ const Register = () => {
 
         if (output !== "Error registering!") {
           localStorage.clear();
+          setSuccess("Successfully registered!")
+          setError()
           // log the user in upon successful register
+          
           await requestLogin();
         } else {
+          setError("Error trying to register, please try again")
+          setSuccess()
           localStorage.clear();
         }
       }
+      
+        
     } catch (err) {
+
+      
       console.warn(`Error registering user: ${err}`);
     }
   };
@@ -113,10 +124,13 @@ const Register = () => {
         const user = jwt_decode(data.access);
         localStorage.setItem("authTokens", JSON.stringify(data));
         localStorage.setItem("username", user.username);
+
+        
         navigate("/");
+        
       }
     } catch (err) {
-      console.warn(`Error requesting login: ${err}`);
+      console.warn(`Error requesting register: ${err}`);
     }
   }
 
@@ -267,6 +281,8 @@ const Register = () => {
           className="submit-btn"
           input="Create your E-Thrift account"
         />
+        <p className="error">{error}</p>
+        <p className="success">{success}</p>
       </form>
     </div>
   );

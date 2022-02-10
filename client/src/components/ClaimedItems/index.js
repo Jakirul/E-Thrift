@@ -17,6 +17,15 @@ const ClaimedItems = ({ setActiveFragment, claimedItems, isLoading }) => {
         );
         console.log(img);
 
+    const [image, setImage] = useState([])
+  
+  
+  useEffect(() => {
+    setImage(claimedItems.image)
+  }, [claimedItems])
+
+    const renderItems = claimedItems.data && claimedItems.data.map((item, key) => { 
+        
         return (
           <ClaimedItemCard
             key={index}

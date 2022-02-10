@@ -9,6 +9,8 @@ import "./style.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState()
+  const [error, setError] = useState()
 
   const { setUsername } = useContext(UserContext);
   const navigate = useNavigate();
@@ -32,9 +34,18 @@ const Login = () => {
       localStorage.setItem("username", user.username);
       localStorage.setItem("email", user.email);
       setUsername(user.username);
-      navigate("/");
+
+      setSuccess("Successfully logged in!")
+      setError()
+      
+      setTimeout(() => {
+        navigate("/");
+      }, 1000)
+
     } catch (err) {
       localStorage.clear();
+      setError(`Error logged in - Email or password does not exist!`)
+      setSuccess()
       console.warn(`Error requesting login: ${err}`);
     }
   }
@@ -82,7 +93,10 @@ const Login = () => {
         >
           Register
         </button>
+        <p className="error-login">{error}</p>
+        <p className="success-login">{success}</p>
       </form>
+      
     </div>
   );
 };
