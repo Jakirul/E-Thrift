@@ -8,7 +8,7 @@ function NavBar({ username, logOut }) {
   return (
     <Navbar aria-label='navbar' expand="lg" bg="dark" variant="dark">
       
-      <Nav.Link as={NavLink} style={{color: "white"}}   to="">E-Thrift</Nav.Link>
+      <Nav.Link as={NavLink} style={{color: "white"}} to="">E-Thrift</Nav.Link>
       {username !== null && (
         <>
           <Nav.Link as={NavLink} to="/search">Find Products</Nav.Link>

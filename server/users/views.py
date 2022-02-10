@@ -97,7 +97,6 @@ def add_rating(request, username, rating):
 @api_view(['POST'])
 def edit_account(request):
     try:
-        print(request.data)
         user_acc = User.objects.get(username=request.data["current_username"])
 
         if user_acc:
